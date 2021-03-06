@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="prefix__Back_Icon" width="24" height="24" data-name="Back Icon" viewBox="0 0 24 24">
+    <path id="prefix__Shape" fill="none" d="M0 0h24v24H0z"/>
+    <rect id="prefix__Rectangle" width="2" height="14" rx="1" transform="rotate(90 4 15)"/>
+    <path id="prefix__Path_94" d="M1.707 7.707A1 1 0 0 1 .293 6.293l6-6a1 1 0 0 1 1.383-.03l6 5.5a1 1 0 0 1-1.351 1.474L7.03 2.384z" data-name="Path 94" transform="rotate(-90 12 7)"/>
+</svg>
