@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import IntersectionVisible from "react-intersection-visible";
 import CardItem from "../common/cardItem";
-import { Container, Grid } from "@material-ui/core";
+import { Container, Grid, Fab, Toolbar } from "@material-ui/core";
 import { handleMaxPage } from "../helpers/maxPage";
 import Loading from "../common/loading";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import ScrollTop from "../helpers/scrollTop";
 
-const List = ({ content }) => {
+const List = (props) => {
   const [page, setPage] = useState(1);
   const [dataArray, setDataArray] = useState();
   const [maxPage, setMaxPage] = useState(1);
@@ -17,6 +19,7 @@ const List = ({ content }) => {
   }, []);
 
   const handleContent = () => {
+    let content = props.content
     if (maxPage >= page) {
       setLoading(true);
       axios
@@ -31,7 +34,7 @@ const List = ({ content }) => {
           setMaxPage(handleMaxPage(res.data.count));
           setLoading(false);
         })
-        .catch((err) => setLoading(false));
+        .catch(() => setLoading(false));
     } else {
       return;
     }
@@ -40,6 +43,7 @@ const List = ({ content }) => {
   return (
     <div style={{ flexGrow: 1 }}>
       <Loading open={loading} />
+      <Toolbar id="back-to-top-anchor" />
       <Container maxWidth="lg">
         {dataArray ? (
           <div style={{ marginTop: 30 }}>
@@ -64,6 +68,15 @@ const List = ({ content }) => {
           <div></div>
         )}
       </Container>
+      <ScrollTop {...props}>
+        <Fab
+          style={{ color: "white", backgroundColor: "#000" }}
+          size="small"
+          aria-label="scroll back to top"
+        >
+          <KeyboardArrowUpIcon />
+        </Fab>
+      </ScrollTop>
     </div>
   );
 };

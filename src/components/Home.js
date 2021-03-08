@@ -1,9 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import { Toolbar, Container, Fab, Typography, Button } from "@material-ui/core";
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
-import ScrollTop from "../helpers/scrollTop";
+import { Container, Typography, Button } from "@material-ui/core";
 import Navbar from "../common/navbar";
 
 const useStyles = makeStyles((theme) => ({
@@ -74,13 +72,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Home = (props) => {
+const Home = ({history}) => {
   const classes = useStyles();
-  const history = props.history;
   return (
     <React.Fragment>
       <Navbar />
-      <Toolbar id="back-to-top-anchor" />
       <Container className={classes.header}>
         <Typography className={classes.headerTextMain}>
           Welcome to Star Wars App
@@ -110,17 +106,7 @@ const Home = (props) => {
             </Button>
           </div>
         </div>
-      </Container>
-
-      <ScrollTop {...props}>
-        <Fab
-          style={{ color: "white", backgroundColor: "#000" }}
-          size="small"
-          aria-label="scroll back to top"
-        >
-          <KeyboardArrowUpIcon />
-        </Fab>
-      </ScrollTop>
+      </Container>      
     </React.Fragment>
   );
 };
